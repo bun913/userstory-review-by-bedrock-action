@@ -106,3 +106,12 @@ jobs:
           LABELS: 'ai-reviewed'
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
+
+## 開発者の方へ
+
+このリポジトリをフォークして変更を加える場合、以下のように必要なリポジトリのシー
+クレットを設定する必要があります：
+
+- `AWS_ROLE_ARN`: Bedrockへのアクセスを許可するIAMロールのARN
+- `AWS_REGION`: Bedrockを利用するリージョン（Sonnet3が利用できるリージョンである
+  こと）

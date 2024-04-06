@@ -109,3 +109,11 @@ jobs:
           LABELS: 'ai-reviewed'
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
+
+## For Developers
+
+If you fork this repository and make changes, you need to set the required
+repository secrets as follows:
+
+- `AWS_ROLE_ARN`: The ARN of the IAM role that allows access to Bedrock
+- `AWS_REGION`: The region where Bedrock is deployed
