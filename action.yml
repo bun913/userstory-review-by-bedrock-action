@@ -1,23 +1,22 @@
-name: 'The name of your action here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
-
-# Add your action's branding here. This will appear on the GitHub Marketplace.
-branding:
-  icon: 'heart'
-  color: 'red'
+name: 'Userstory-Review-Action'
+description: 'Review user stories and provide feedback.'
+author: 'bun913'
 
 # Define your inputs here.
 inputs:
-  milliseconds:
-    description: 'Your input description here'
+  BEDROCK_REGION:
+    description: 'Bedrock region'
     required: true
-    default: '1000'
-
-# Define your outputs here.
-outputs:
-  time:
-    description: 'Your output description here'
+    default: 'us-east-1'
+  CHECK_LIST:
+    description: 'Check list'
+    required: false
+    default:
+      "- ストーリーは要求者の観点で記述されているか？\n-
+      受け入れ基準は定義されており、テスト可能か？\n-
+      フィーチャは明確に定義されており、他と区別できるか？\n-
+      ストーリーは一般的に使用される形式に従っているか？\n  -
+      <ユーザーの種類>として<あるゴール>をしたい、なぜなら<ある理由>だから"
 
 runs:
   using: node20
