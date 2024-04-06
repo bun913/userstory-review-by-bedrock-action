@@ -45168,7 +45168,7 @@ async function run() {
     try {
         const client = new client_bedrock_runtime_1.BedrockRuntime({ region: (0, getEnv_1.getRegion)() });
         const reviewdResult = await (0, review_1.reviewByAI)(client, samples_1.notOkUserStory);
-        console.log(reviewdResult);
+        core.setOutput('reviewedResult', reviewdResult);
     }
     catch (error) {
         // Fail the workflow run if an error occurs
