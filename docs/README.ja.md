@@ -6,41 +6,38 @@
 [![CodeQL](https://github.com/actions/typescript-action/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/actions/typescript-action/actions/workflows/codeql-analysis.yml)
 [![Coverage](./badges/coverage.svg)](./badges/coverage.svg)
 
-[日本語ドキュメントはこちら](./docs/README.ja.md)
+このGitHubアクションは、Amazon BedrockのClaude 3 Sonnet
+(anthropic.claude-3-sonnet-20240229-v1:0) を使用して、以下の基準に基づいて引数で
+渡されたユーザーストーリーの文章をレビューします。
 
-This GitHub Action utilizes Amazon Bedrock's Claude 3 Sonnet
-(anthropic.claude-3-sonnet-20240229-v1:0) to review user stories submitted to
-it, based on the following criteria:
-
-- Is the story written from the perspective of the requester?
-- Are acceptance criteria defined and testable?
-- Is the feature clearly defined and distinguishable from others?
-- Does the story adhere to commonly used formats?
-  - As a [type of user], I want [some goal] so that [some reason].
+- ストーリーは要求者の視点から書かれていますか？
+- 受け入れ基準は定義され、テスト可能ですか？
+- 機能は明確に定義され、他と区別できますか？
+- ストーリーは一般的に使用されるフォーマットに従っていますか？
+  - [ユーザーのタイプ]として、[ある目的]を達成したい、なぜなら[ある理由]だから。
 
 > [!IMPORTANT]
 >
-> Please note that this is currently intended for use in Japanese.
+> これは現在、日本語での使用を前提としています。
 
-## How to use
+## 使い方
 
-Prerequisites
+前提条件
 
-- You will use your AWS account with Bedrock (**please note that charges will
-  apply**)
-- You must have access to the Claude3 Sonnet model in Bedrock
-  - If you can read Japanese, please refer to the following blog for guidance
-  - [Trying out Claude 3 Haiku with Amazon Bedrock | DevelopersIO](https://dev.classmethod.jp/articles/claude-3-haiku-bedrock/)
-- You must have IAM permissions with access to Bedrock in advance
-  - If you can read Japanese, please set up your IAM role with the help of the
-    following blog
-    - [I don't want to set AWS credentials directly in GitHub Actions, so I want to use an IAM role | DevelopersIO](https://dev.classmethod.jp/articles/github-actions-aws-sts-credentials-iamrole/)
+- あなたのAWSアカウントでBedrockを使用します（**料金が発生することに注意してくだ
+  さい**）
+- BedrockでClaude3 Sonnetモデルを使用できる必要があります
+  - 日本語が読める場合は、以下のブログを参考にしてください
+  - [Amazon BedrockでClaude 3 Haikuを試してみた | DevelopersIO](https://dev.classmethod.jp/articles/claude-3-haiku-bedrock/)
+- 事前にBedrockへのアクセス権限を持つIAM権限が必要です
+  - 日本語が読める場合は、以下のブログを参考にIAMロールを設定してください
+    - [GitHub ActionsにAWSクレデンシャルを直接設定したくないのでIAMロールを使用したい | DevelopersIO](https://dev.classmethod.jp/articles/github-actions-aws-sts-credentials-iamrole/)
 
-### Example Configuration for User Stories in GitHub Issues
+### GitHubのIssueでのユーザーストーリーに対する設定例
 
-For instance, by setting up your `.github/workflows/*.yml` like the following,
-you can automate reviewing user stories registered as GitHub Issues, adding or
-removing labels, etc.
+例えば、`.github/workflows/*.yml`を以下のように設定することで、GitHubのIssueとし
+て登録されたユーザーストーリーのレビューや、ラベルの追加・削除などを自動化できま
+す。
 
 ```yml
 name: User Story Review
@@ -110,10 +107,11 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-## For Developers
+## 開発者の方へ
 
-If you fork this repository and make changes, you need to set the required
-repository secrets as follows:
+このリポジトリをフォークして変更を加える場合、以下のように必要なリポジトリのシー
+クレットを設定する必要があります：
 
-- `AWS_ROLE_ARN`: The ARN of the IAM role that allows access to Bedrock
-- `AWS_REGION`: The region where Bedrock is deployed
+- `AWS_ROLE_ARN`: Bedrockへのアクセスを許可するIAMロールのARN
+- `AWS_REGION`: Bedrockを利用するリージョン（Sonnet3が利用できるリージョンである
+  こと）
