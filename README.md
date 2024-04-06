@@ -76,7 +76,7 @@ jobs:
       # (Issues with label 'user-story' will be reviewed by Bedrock AI)
       - name: Review User Story
         id: review
-        uses: bun913/userstory-review-by-bedrock-action@v0.2.1
+        uses: bun913/userstory-review-by-bedrock-action@v0.3.0
         with:
           bedrock_region: us-east-1
           issue_body: ${{ github.event.issue.body }}
