@@ -52,13 +52,20 @@ jobs:
       - name: Checkout
         id: checkout
         uses: actions/checkout@v4
+      
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ secrets.AWS_REGION }}
 
       - name: Test Local Action
         id: test-action
         uses: ./
         with:
-          milliseconds: 2000
+          bedrock_region: ${{ secrets.AWS_REGION }}
+          issue_body: "## ユーザーストーリー\n\n-テナント管理者がショップ情報を編集できる\n\n## 受け入れ基準\n\n- 正当な権限を持つユーザーがテナント情報を作成・更新できること" 
 
       - name: Print Output
         id: output
-        run: echo "${{ steps.test-action.outputs.time }}"
+        run: echo "${{ steps.test-action.outputs.review_result }}"
