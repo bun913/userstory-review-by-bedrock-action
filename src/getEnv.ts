@@ -9,7 +9,7 @@ export const getRegion = (): string => {
   return region
 }
 
-export const getSystemPrompt = () => {
+export const getSystemPrompt = (): string => {
   const rule = rulePrompt
   const checkList = getCheckList()
   return `${rule}${checkList}${orderMessage}`

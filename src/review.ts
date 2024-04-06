@@ -1,7 +1,10 @@
 import type { BedrockRuntime } from '@aws-sdk/client-bedrock-runtime'
 import { getSystemPrompt } from './getEnv'
 
-export const reviewByAI = async (client: BedrockRuntime, userStory: string) => {
+export const reviewByAI = async (
+  client: BedrockRuntime,
+  userStory: string
+): Promise<string> => {
   const res = await client.invokeModel({
     modelId: 'anthropic.claude-3-sonnet-20240229-v1:0',
     body: JSON.stringify({
