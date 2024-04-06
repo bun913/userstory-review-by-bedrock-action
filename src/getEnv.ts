@@ -1,7 +1,8 @@
+import * as core from '@actions/core'
 import { defaultCheckList, orderMessage, rulePrompt } from './constants'
 
 export const getRegion = (): string => {
-  const region = process.env.BEDROCK_REGION
+  const region = core.getInput('bedrock_region')
   if (!region) {
     return 'us-east-1'
   }
@@ -15,7 +16,7 @@ export const getSystemPrompt = () => {
 }
 
 const getCheckList = (): string => {
-  const checkList = process.env.CHECK_LIST
+  const checkList = core.getInput('check_list')
   if (!checkList) {
     return `<checklist>${defaultCheckList}</checklist>`
   }
