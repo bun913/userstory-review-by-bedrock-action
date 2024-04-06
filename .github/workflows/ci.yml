@@ -52,7 +52,7 @@ jobs:
       - name: Checkout
         id: checkout
         uses: actions/checkout@v4
-      
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -64,7 +64,11 @@ jobs:
         uses: ./
         with:
           bedrock_region: ${{ secrets.AWS_REGION }}
-          issue_body: "## ユーザーストーリー\n\n-テナント管理者がショップ情報を編集できる\n\n## 受け入れ基準\n\n- 正当な権限を持つユーザーがテナント情報を作成・更新できること" 
+          issue_body:
+            "##
+            ユーザーストーリー\n\n-テナント管理者がショップ情報を編集できる\n\n##
+            受け入れ基準\n\n-
+            正当な権限を持つユーザーがテナント情報を作成・更新できること"
 
       - name: Print Output
         id: output
