@@ -12,7 +12,7 @@ export async function run(): Promise<void> {
   try {
     const client = new BedrockRuntime({ region: getRegion() })
     const reviewdResult = await reviewByAI(client, notOkUserStory)
-    core.setOutput('reviewedResult', reviewdResult)
+    core.setOutput('review_result', reviewdResult)
   } catch (error) {
     // Fail the workflow run if an error occurs
     if (error instanceof Error) core.setFailed(error.message)
