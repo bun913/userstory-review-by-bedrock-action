@@ -16,7 +16,7 @@ it, based on the following criteria:
 - Are acceptance criteria defined and testable?
 - Is the feature clearly defined and distinguishable from others?
 - Does the story adhere to commonly used formats?
-  - As a <type of user>, I want <some goal> so that <some reason>.
+  - As a [type of user], I want [some goal] so that [some reason].
 
 > [!IMPORTANT]
 >
