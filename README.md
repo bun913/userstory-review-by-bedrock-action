@@ -72,7 +72,8 @@ jobs:
           role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
           aws-region: us-east-1
 
-      # Review User Story(Issues with label 'user-story' will be reviewed by Bedrock AI)
+      # Review User Story
+      # (Issues with label 'user-story' will be reviewed by Bedrock AI)
       - name: Review User Story
         id: review
         uses: bun913/userstory-review-by-bedrock-action@v0.2.1
